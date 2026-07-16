@@ -1,0 +1,23 @@
+# Variáveis do conector WhatsApp (Z-API).
+# No fluxo do botão "Deploy to Cloudflare", você cola estes valores no painel
+# da Cloudflare depois que o Worker sobe (Settings > Variables and Secrets),
+# marcando cada um como "Secret". Nunca coloque os valores reais neste arquivo.
+
+# Segredo do caminho da URL. Invente um texto longo e aleatório (32+ caracteres,
+# sem espaços). O do seu gerenciador de senhas serve. É a "senha" do conector,
+# e o mesmo segredo entra na URL do MCP e na URL do webhook.
+MCP_SECRET="cole-aqui-um-texto-aleatorio-longo"
+
+# ID da instância Z-API. No painel da Z-API, abra a instância: é o "ID da instância".
+ZAPI_INSTANCE_ID="id-da-sua-instancia"
+
+# Token da instância Z-API. Fica junto do ID, campo "Token da instância".
+ZAPI_INSTANCE_TOKEN="token-da-sua-instancia"
+
+# Client-Token: token de segurança da conta (nível conta, não da instância).
+# No painel da Z-API, menu "Segurança". Vai no header Client-Token de toda chamada.
+ZAPI_CLIENT_TOKEN="token-de-seguranca-da-conta"
+
+# O banco de mensagens (binding DB) NÃO é secret e não entra aqui. É um banco D1:
+# o botão "Deploy to Cloudflare" cria ele sozinho e o Worker cria a tabela na
+# primeira mensagem. Detalhes no wrangler.toml.

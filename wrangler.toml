@@ -1,0 +1,23 @@
+# Conector WhatsApp (Z-API) · Cloudflare Worker
+# O nome final vira "zapi-whatsapp-<cliente>" no deploy.
+name = "zapi-whatsapp"
+main = "src/index.js"
+compatibility_date = "2024-11-01"
+
+[observability]
+enabled = false
+
+# account_id não fica aqui. Cada cliente publica na própria conta Cloudflare
+# (a conta em que rodou `wrangler login`).
+
+# Banco D1 que guarda o histórico de mensagens capturadas pelo webhook.
+#
+# O `database_id` fica de fora DE PROPÓSITO. Sem id, a Cloudflare cria o banco
+# sozinha na conta de quem clicar no botão de deploy e escreve o id certo. Se a
+# gente preenchesse com um placeholder, o deploy quebraria na validação.
+#
+# A tabela de mensagens o próprio Worker cria na primeira escrita (veja
+# garantirSchema no src/index.js), então não tem nada pra rodar no terminal.
+[[d1_databases]]
+binding = "DB"
+database_name = "zapi-whatsapp-db"
